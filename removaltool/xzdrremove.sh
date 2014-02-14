@@ -12,8 +12,8 @@ fi
 
 if [ -f "/system/app/NDRUtils.apk" ]; then
     rm /system/app/NDRUtils.apk
-fi	
-	
+fi
+
 if [ -f "/system/bin/recovery.twrp.cpio.lzma" ]; then
     rm /system/bin/recovery.twrp.cpio.lzma
 fi
@@ -33,7 +33,7 @@ fi
 if [ -f "/system/bin/recovery.philz.cpio.lzma" ]; then
     rm /system/bin/recovery.philz.cpio.lzma
 fi
-	
+
 if [ -f "/system/bin/ramdisk.stock.cpio.lzma" ]; then
     rm /system/bin/ramdisk.stock.cpio.lzma
 fi
@@ -53,6 +53,11 @@ fi
 if [ -f "/system/bin/chargemon" -a -f "/system/bin/chargemon.stock" ]; then
     rm /system/bin/chargemon
     mv /system/bin/chargemon.stock /system/bin/chargemon
+fi
+
+if [ -f "/system/bin/mr" -a -f "/system/bin/mr.stock" ]; then
+    rm /system/bin/mr
+    mv /system/bin/mr.stock /system/bin/mr
 fi
 
 if [ -f "/system/bin/dualrecovery.sh" ]; then
