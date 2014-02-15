@@ -116,7 +116,7 @@ if [ -f "/system/app/NDRUtils.apk" ]; then
     rm /system/app/NDRUtils.apk
 fi
 
-if [ -f "/data/app/com.camber.ndrutils-1.apk/" ]; then
+if [ -f "/data/app/com.camber.ndrutils-1.apk" ]; then
     rm /data/app/com.camber.ndrutils-1.apk
 fi	
 
