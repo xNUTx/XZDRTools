@@ -100,6 +100,7 @@ ui_print "==========================================="
 ui_print ""
 
 mount /system
+mount /data
 mount /cache
 mount auto /dev/block/mmcblk1p1 /external_sd
 
