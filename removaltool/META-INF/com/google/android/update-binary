@@ -171,6 +171,7 @@ if [ -f "/system/bin/dualrecovery.sh" ]; then
 fi
 
 umount /system
+umount /data
 umount /cache
 umount /external_sd
 
