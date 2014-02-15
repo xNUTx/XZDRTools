@@ -43,6 +43,10 @@ package_extract_file() {
 # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system
 mount() {
 	if [ "$2" = "" ]; then
+		MOUNTS=$(cat /proc/mounts | grep "$1" | wc -l)
+		if [ "$MOUNTS" != "0" ]; then
+			return 0
+		fi
 		/sbin/mount $1
 		if [ "$?" != "0" ]; then
 			DEVICE=$(grep -i "$1" /etc/*.fstab | awk -F' ' '{print $1}')
@@ -64,6 +68,10 @@ mount() {
 		fi
 	fi
 	if [ "$1" != "" -a "$2" != "" -a "$3" != ""]; then
+		MOUNTS=$(cat /proc/mounts | grep "$3" | wc -l)
+		if [ "$MOUNTS" != "0" ]; then
+			return 0
+		fi
 		/sbin/mount -t $1 $2 $3
 		if [ "$?" != "0" ]; then
 			ui_print "Mounting $1 failed!"
