@@ -101,7 +101,7 @@ ui_print ""
 mount /system
 mount /data
 mount /cache
-mount auto /dev/block/mmcblk1p1 /external_sd
+/sbin/mount -t auto /dev/block/mmcblk1p1 /external_sd
 
 if [ -d "/external_sd/XZDualRecovery" ]; then
     rm -rf /external_sd/XZDualRecovery
