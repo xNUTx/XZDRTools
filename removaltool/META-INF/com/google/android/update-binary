@@ -58,7 +58,6 @@ mount() {
 				DEVICE=$(find /dev/block/platform/msm_sdcc.1/by-name/ -iname "$1")
 				MOUNTPOINT=$1
 				FSTYPE=$(/sbin/busybox blkid ${DEVICE} | /sbin/busybox awk -F' ' '{ print $NF }' | /sbin/busybox awk -F'[\"=]' '{ print $3 }');
-				OPTIONS="defaults"
 				/sbin/mount -t $FSTYPE $DEVICE $MOUNTPOINT
 				if [ "$?" != "0" ]; then
 					ui_print "Mounting $1 failed!"
