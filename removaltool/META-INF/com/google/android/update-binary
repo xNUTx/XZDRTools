@@ -127,7 +127,8 @@ ui_print ""
 mount /system
 mount /data
 mount /cache
-/sbin/mount -t auto /dev/block/mmcblk1p1 /external_sd
+#/sbin/mount -t auto /dev/block/mmcblk1p1 /external_sd
+mount auto /dev/block/mmcblk1p1 /external_sd
 
 if [ -d "/external_sd/XZDualRecovery" ]; then
     rm -rf /external_sd/XZDualRecovery
@@ -143,7 +144,7 @@ fi
 
 if [ -f "/data/app/com.camber.ndrutils-1.apk" ]; then
     rm /data/app/com.camber.ndrutils-1.apk
-fi	
+fi
 
 if [ -f "/system/bin/recovery.twrp.cpio.lzma" ]; then
     rm /system/bin/recovery.twrp.cpio.lzma
