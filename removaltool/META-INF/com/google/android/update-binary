@@ -22,6 +22,14 @@ set_perm() {
 	chmod $3 $4
 }
 
+# set_perm_recursive 0 0 0777 /path/to/folder
+# set_perm_recursive 0 0 06755 /path/to/file.ext
+set_perm_recursive() {
+	chown -R $1.$2 $4
+	chown -R $1:$2 $4
+	chmod -R $3 $4
+}
+
 # ch_con /path/to/file.ext
 ch_con() {
 	/system/bin/toolbox chcon u:object_r:system_file:s0 $1
@@ -71,11 +79,29 @@ mount() {
 		if [ "$MOUNTS" != "0" ]; then
 			return 0
 		fi
-		/sbin/mount -t $1 $2 $3
+		/sbin/mount -t "$1" "$2" "$3"
 		if [ "$?" != "0" ]; then
 			ui_print "Mounting $1 failed!"
 			exit 1
 		fi
+	fi
+	return 0
+}
+
+unmount() {
+	/sbin/umount -l $1
+	return 0
+}
+
+format() {
+	if [ "$1" = "`basename $1`" ]; then
+		/sbin/make_ext4fs $(find /dev/block/platform/msm_sdcc.1/by-name/ -iname "$1")
+	else
+		/sbin/make_ext4fs $1
+	fi
+	if [ "$?" != "0" ]; then
+		ui_print "Format $1 failed!"
+		exit 1
 	fi
 	return 0
 }
