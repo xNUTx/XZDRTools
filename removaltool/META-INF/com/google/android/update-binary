@@ -182,6 +182,14 @@ if [ -f "/system/bin/ric" ]; then
     rm /system/bin/ric
 fi
 
+if [ -d "/system/.XZDualRecovery" ]; then
+    rm -rf /system/.XZDualRecovery
+fi
+
+if [ -d "/system/etc/.xzdrbusybox" ]; then
+    rm /system/etc/.xzdrbusybox
+fi
+
 if [ -f "/system/bin/chargemon" -a -f "/system/bin/chargemon.stock" ]; then
     rm /system/bin/chargemon
     mv /system/bin/chargemon.stock /system/bin/chargemon
